@@ -3,6 +3,7 @@ import { PlaceProps } from "@/components/place";
 import { Places } from "@/components/places";
 import { api } from "@/services/api";
 import { colors, fontFamily } from "@/styles/theme";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { View, Alert, Text } from "react-native";
 import MapView, { Callout, Marker } from "react-native-maps";
@@ -60,7 +61,7 @@ export default function Home () {
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#CECECE" }}>
+    <View style={{ flex: 1 }}>
       <Categories 
        data={categories}
        onSelect={setCategory}
@@ -94,8 +95,8 @@ export default function Home () {
              }}
              image={require("@/assets/pin.png")}
            >
-            <Callout>
-              <View >
+            <Callout onPress={() => router.navigate(`/market/[id].`)}>
+              <View>
                 <Text 
                   style={{ 
                     fontSize: 14,
